@@ -5,28 +5,40 @@
     </div>
     <div style="margin: 20px auto;width: 575px;text-align: center;"><button @click="search()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Find</button></div>
     
-    <div id="addUserDiv" style="margin: 50 auto; max-width: 100%; border-radius: 30px;  border: 1px solid #dcdcdc; display: none;">
-          <input type="text" id="addfirstname" placeholder="FirstName">&nbsp;
-          <input type="text" id="addlastname" placeholder="LastName">&nbsp;
-          <input type="text" id="addemail" placeholder="Email">&nbsp;
-          <input type="text" id="addphone" placeholder="Phone">&nbsp;
-          <input type="text" id="addgender" placeholder="Gender">&nbsp;
-          <input type="text" id="adddateOfBirth" placeholder="Date of Birth">&nbsp;
-          <input type="text" id="addnationality" placeholder="Nationality">&nbsp;
-          <input type="text" id="addrole" placeholder="Role">&nbsp;
-          <button @click="addNewUser()">Add New User</button>
+    <div id="addUserDiv" style="padding: 20px;margin: 50 auto; width: 575px; border-radius: 30px;  border: 1px solid #dcdcdc; display: none;">     
+      <div style="margin: 20px auto;max-width:100%;text-align: center;">
+        <h4>ADD NEW USER</h4>
+      </div>
+      <input type="text" id="addfirstname" placeholder="FirstName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <input type="text" id="addlastname" placeholder="LastName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <input type="text" id="addemail" placeholder="Email" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <input type="text" id="addphone" placeholder="Phone" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <input type="text" id="addgender" placeholder="Gender" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <input type="text" id="adddateOfBirth" placeholder="Date of Birth [yyyy-mm-dd]" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <input type="text" id="addnationality" placeholder="Nationality" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <input type="text" id="addrole" placeholder="Role" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <div style="margin: 20px auto;max-width:100%;text-align: center;">
+        <button @click="addNewUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Add New User</button>
+        <button @click="cancelAddNewUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Cancel</button>
+      </div>
     </div>
 
-    <div id="editUserDiv"style="margin: 50 auto; max-width: 100%; border-radius: 30px;  border: 1px solid #dcdcdc; display:none;" >
-      <input type="text" id="editfirstname" placeholder="FirstName">&nbsp;
-      <input type="text" id="editlastname" placeholder="LastName">&nbsp;
-      <input type="text" id="editemail" placeholder="Email">&nbsp;
-      <input type="text" id="editphone" placeholder="Phone">&nbsp;
-      <input type="text" id="editgender" placeholder="Gender">&nbsp;
-      <input type="text" id="editdateOfBirth" placeholder="Date of Birth">&nbsp;
-      <input type="text" id="editnationality" placeholder="Nationality">&nbsp;
-      <input type="text" id="editrole" placeholder="Role">&nbsp;
-      <button @click="saveUserChanges()">Save Changes</button>
+    <div id="editUserDiv" style="padding: 20px;margin: 50 auto; width: 575px; border-radius: 30px;  border: 1px solid #dcdcdc; display: none;">
+      <div style="margin: 20px auto;max-width:100%;text-align: center;">
+        <h4>EDIT USER</h4>
+      </div>
+      <input type="text" id="editfirstname" placeholder="FirstName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <input type="text" id="editlastname" placeholder="LastName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <input type="text" id="editemail" placeholder="Email" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <input type="text" id="editphone" placeholder="Phone" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <input type="text" id="editgender" placeholder="Gender" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <input type="text" id="editdateOfBirth" placeholder="Date of Birth [yyyy-mm-dd]" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <input type="text" id="editnationality" placeholder="Nationality" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <input type="text" id="editrole" placeholder="Role" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+      <div style="margin: 20px auto;max-width:100%;text-align: center;" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">
+        <button @click="saveUserChanges()"  style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Save Changes</button>
+        <button @click="cancelEditUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Cancel</button>
+      </div>
   </div>
 
   <div style="margin: 50 auto; max-width: 100%; border-radius: 30px;  border: 1px solid #dcdcdc;" >
@@ -83,11 +95,7 @@
       methods:{
         showAddUser(){
           var x = document.getElementById("addUserDiv");
-          if (x.style.display === "none") {
             x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
         },
         addOrRemoveDeleteUser(userid){
           if(this.deleteUsers.includes(userid)){
@@ -97,6 +105,14 @@
             }
           }
           else this.deleteUsers.push(userid);
+        },
+        cancelAddNewUser(){
+          var x = document.getElementById("addUserDiv");
+            x.style.display = "none";
+        },
+        cancelEditUser(){
+          var x = document.getElementById("editUserDiv");
+            x.style.display = "none";
         },
         async refreshData(){
             axios.get(API_URL+"api/Users", {
