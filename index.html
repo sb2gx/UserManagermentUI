@@ -1,6 +1,11 @@
 <div id="app">
     <h2>{{title}}</h2>
     <div>
+      <h3>Search</h3>
+      <input type="text" id="search" placeholder="Search">
+      <button @click="search()">Find</button>
+    </div>
+    <div>
           <input type="text" id="addfirstname" placeholder="FirstName">&nbsp;
           <input type="text" id="addlastname" placeholder="LastName">&nbsp;
           <input type="text" id="addemail" placeholder="Email">&nbsp;
@@ -21,11 +26,12 @@
       <input type="text" id="editdateOfBirth" placeholder="Date of Birth">&nbsp;
       <input type="text" id="editnationality" placeholder="Nationality">&nbsp;
       <input type="text" id="editrole" placeholder="Role">&nbsp;
-      <button @click="editNewUser()">Add New User</button>
+      <button @click="saveUserChanges()">Save Changes</button>
   </div>
 
-    <table>
+    <table id="userTable">
       <tr>
+        <th></th>
         <th>FirstName</th>
         <th>LastName</th>
         <th>Email</th>
@@ -38,6 +44,7 @@
         <th>Delete</th>
       </tr>
       <tr v-for="user in users">
+        <td><input type="checkbox" :id="user.id" :name="user.firstName" v-on:change="addOrRemoveDeleteUser(user.id)"></td>
         <td>{{user.firstName}}</td>
         <td>{{user.lastName}}</td>
         <td>{{user.email}}</td>
@@ -46,11 +53,11 @@
         <td>{{user.dateOfBirth}}</td>
         <td>{{user.nationality}}</td>
         <td>{{user.role}}</td>
-        <td><button @click="editUser(user.id)">Edit User</button></td>
+        <td><button @click="editUser(user.id, user.firstName, user.lastName, user.email, user.phone, user.gender, user.dateOfBirth, user.nationality, user.role)">Edit User</button></td>
         <td><button @click="deleteUser(user.id)">Delete User</button></td>
       </tr>
     </table>
-    
+    <button @click="multipleDeletes()">Delete Selected Users</button>
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
@@ -62,10 +69,21 @@
     data() {
       return {
         title:"User Management",
-        users:[]
+        users:[],
+        editUserId:-1,
+        deleteUsers:[]
       }
     },
       methods:{
+        addOrRemoveDeleteUser(userid){
+          if(this.deleteUsers.includes(userid)){
+            const index = this.deleteUsers.indexOf(userid);
+            if (index > -1) {
+              this.deleteUsers.splice(index, 1);
+            }
+          }
+          else this.deleteUsers.push(userid);
+        },
         async refreshData(){
             axios.get(API_URL+"api/Users", {
             headers: {
@@ -115,15 +133,8 @@
               alert(response.data);
             }
           )
-
-          // axios.post(API_URL+"api/Users", json).then(
-          //   (response)=>{
-          //     this.refreshData();
-          //     alert(response.data);
-          //   }
-          // )
         },
-        async editUser(userid){
+        async saveUserChanges(){
           var firstname = document.getElementById("editfirstname").value;
           var lastname = document.getElementById("editlastname").value;
           var email = document.getElementById("editemail").value;
@@ -134,6 +145,7 @@
           var role = document.getElementById("editrole").value;
 
           const formData = new FormData();
+          formData.append("id", this.editUserId);
           formData.append("firstName", firstname);
           formData.append("lastName", lastname);
           formData.append("email", email);
@@ -149,7 +161,7 @@
           });
           var json = JSON.stringify(object);
 
-          axios.put(API_URL+"api/Users", userid, json, {
+          axios.put(API_URL+"api/Users/"+this.editUserId, json, {
             headers: {
               'Content-Type': 'application/json',
               'Access-Control-Allow-Origin': "'"+SERVER_URL+"'"
@@ -158,14 +170,49 @@
             (response)=>{
               this.refreshData();
               alert(response.data);
+          console.log(JSON.stringify(response));
             }
           )
+        },
+        async editUser(userid, firstName, lastName, email, phone, gender, dateOfBirth, nationality, role){
+          this.editUserId = userid;
+          document.getElementById("editfirstname").value = firstName;
+          document.getElementById("editlastname").value = lastName;
+          document.getElementById("editemail").value = email;
+          document.getElementById("editphone").value = phone;
+          document.getElementById("editgender").value = gender;
+          document.getElementById("editdateOfBirth").value = dateOfBirth;
+          document.getElementById("editnationality").value = nationality;
+          document.getElementById("editrole").value = role;
         },
         async deleteUser(userid){
           axios.delete(API_URL+"api/Users/"+userid).then(
                 (response)=>{
                   this.refreshData();
                   alert(response.data);
+                }
+            )
+        },
+        async multipleDeletes(){
+            this.deleteUsers.forEach(element => {
+              axios.delete(API_URL+"api/Users/"+element).then(
+                (response)=>{
+                  this.refreshData();
+                }
+            )
+            });
+            alert(response.data);
+        },
+        async search(){
+          var searchString = document.getElementById("search").value;
+          axios.get(API_URL+"api/Users/search/"+searchString, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin':  "'"+SERVER_URL+"'"
+            }
+          }).then(
+                (response)=>{
+                    this.users=response.data;
                 }
             )
         }
