@@ -1,0 +1,176 @@
+<div id="app">
+    <h2>{{title}}</h2>
+    <div>
+          <input type="text" id="addfirstname" placeholder="FirstName">&nbsp;
+          <input type="text" id="addlastname" placeholder="LastName">&nbsp;
+          <input type="text" id="addemail" placeholder="Email">&nbsp;
+          <input type="text" id="addphone" placeholder="Phone">&nbsp;
+          <input type="text" id="addgender" placeholder="Gender">&nbsp;
+          <input type="text" id="adddateOfBirth" placeholder="Date of Birth">&nbsp;
+          <input type="text" id="addnationality" placeholder="Nationality">&nbsp;
+          <input type="text" id="addrole" placeholder="Role">&nbsp;
+          <button @click="addNewUser()">Add New User</button>
+    </div>
+
+    <div>
+      <input type="text" id="editfirstname" placeholder="FirstName">&nbsp;
+      <input type="text" id="editlastname" placeholder="LastName">&nbsp;
+      <input type="text" id="editemail" placeholder="Email">&nbsp;
+      <input type="text" id="editphone" placeholder="Phone">&nbsp;
+      <input type="text" id="editgender" placeholder="Gender">&nbsp;
+      <input type="text" id="editdateOfBirth" placeholder="Date of Birth">&nbsp;
+      <input type="text" id="editnationality" placeholder="Nationality">&nbsp;
+      <input type="text" id="editrole" placeholder="Role">&nbsp;
+      <button @click="editNewUser()">Add New User</button>
+  </div>
+
+    <table>
+      <tr>
+        <th>FirstName</th>
+        <th>LastName</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Gender</th>
+        <th>GateOfBirth</th>
+        <th>Nationality</th>
+        <th>Role</th>
+        <th>Edit</th>
+        <th>Delete</th>
+      </tr>
+      <tr v-for="user in users">
+        <td>{{user.firstName}}</td>
+        <td>{{user.lastName}}</td>
+        <td>{{user.email}}</td>
+        <td>{{user.phone}}</td>
+        <td>{{user.gender}}</td>
+        <td>{{user.dateOfBirth}}</td>
+        <td>{{user.nationality}}</td>
+        <td>{{user.role}}</td>
+        <td><button @click="editUser(user.id)">Edit User</button></td>
+        <td><button @click="deleteUser(user.id)">Delete User</button></td>
+      </tr>
+    </table>
+    
+
+<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+<script type="module">
+  import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
+    const API_URL="https://localhost:7238/"
+    const SERVER_URL="http://127.0.0.1:5500"
+  createApp({
+    data() {
+      return {
+        title:"User Management",
+        users:[]
+      }
+    },
+      methods:{
+        async refreshData(){
+            axios.get(API_URL+"api/Users", {
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin':  "'"+SERVER_URL+"'"
+            }
+          }).then(
+                (response)=>{
+                    this.users=response.data;
+                }
+            )
+        },
+        async addNewUser(){
+          var firstname = document.getElementById("addfirstname").value;
+          var lastname = document.getElementById("addlastname").value;
+          var email = document.getElementById("addemail").value;
+          var phone  = document.getElementById("addphone").value;
+          var gender = document.getElementById("addgender").value;
+          var dateOfBirth = document.getElementById("adddateOfBirth").value;
+          var nationality = document.getElementById("addnationality").value;
+          var role = document.getElementById("addrole").value;
+
+          const formData = new FormData();
+          formData.append("firstName", firstname);
+          formData.append("lastName", lastname);
+          formData.append("email", email);
+          formData.append("phone", phone);
+          formData.append("gender", gender);
+          formData.append("dateOfBirth", dateOfBirth);
+          formData.append("nationality", nationality);
+          formData.append("role", role);
+
+          var object = {};
+          formData.forEach(function(value, key){
+              object[key] = value;
+          });
+          var json = JSON.stringify(object);
+
+          axios.post(API_URL+"api/Users", json, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': "'"+SERVER_URL+"'"
+            }
+          }).then(
+            (response)=>{
+              this.refreshData();
+              alert(response.data);
+            }
+          )
+
+          // axios.post(API_URL+"api/Users", json).then(
+          //   (response)=>{
+          //     this.refreshData();
+          //     alert(response.data);
+          //   }
+          // )
+        },
+        async editUser(userid){
+          var firstname = document.getElementById("editfirstname").value;
+          var lastname = document.getElementById("editlastname").value;
+          var email = document.getElementById("editemail").value;
+          var phone  = document.getElementById("editphone").value;
+          var gender = document.getElementById("editgender").value;
+          var dateOfBirth = document.getElementById("editdateOfBirth").value;
+          var nationality = document.getElementById("editnationality").value;
+          var role = document.getElementById("editrole").value;
+
+          const formData = new FormData();
+          formData.append("firstName", firstname);
+          formData.append("lastName", lastname);
+          formData.append("email", email);
+          formData.append("phone", phone);
+          formData.append("gender", gender);
+          formData.append("dateOfBirth", dateOfBirth);
+          formData.append("nationality", nationality);
+          formData.append("role", role);
+
+          var object = {};
+          formData.forEach(function(value, key){
+              object[key] = value;
+          });
+          var json = JSON.stringify(object);
+
+          axios.put(API_URL+"api/Users", userid, json, {
+            headers: {
+              'Content-Type': 'application/json',
+              'Access-Control-Allow-Origin': "'"+SERVER_URL+"'"
+            }
+          }).then(
+            (response)=>{
+              this.refreshData();
+              alert(response.data);
+            }
+          )
+        },
+        async deleteUser(userid){
+          axios.delete(API_URL+"api/Users/"+userid).then(
+                (response)=>{
+                  this.refreshData();
+                  alert(response.data);
+                }
+            )
+        }
+      },mounted:function(){
+        this.refreshData();
+      }
+  }).mount('#app')
+</script>
