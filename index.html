@@ -1,11 +1,11 @@
 <div id="app">
-    <h2>{{title}}</h2>
-    <div>
-      <h3>Search</h3>
-      <input type="text" id="search" placeholder="Search">
-      <button @click="search()">Find</button>
+    <div style="margin: 0 auto; width: 575px;"><h2 style="margin: 20px 20px; text-align:center;">{{title}}</h2></div>
+    <div style="margin: 0 auto; width: 575px; border-radius: 30px;  border: 1px solid #dcdcdc;">
+      <input type="text" id="search" placeholder="Search" style="height: 45px;width: 500px;font-size: 16px;outline: none;padding: 1px 20px;border: none;/* align-content: center; */margin: 10 10;">    
     </div>
-    <div>
+    <div style="margin: 20px auto;width: 575px;text-align: center;"><button @click="search()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Find</button></div>
+    
+    <div id="addUserDiv" style="margin: 50 auto; max-width: 100%; border-radius: 30px;  border: 1px solid #dcdcdc; display: none;">
           <input type="text" id="addfirstname" placeholder="FirstName">&nbsp;
           <input type="text" id="addlastname" placeholder="LastName">&nbsp;
           <input type="text" id="addemail" placeholder="Email">&nbsp;
@@ -17,7 +17,7 @@
           <button @click="addNewUser()">Add New User</button>
     </div>
 
-    <div>
+    <div id="editUserDiv"style="margin: 50 auto; max-width: 100%; border-radius: 30px;  border: 1px solid #dcdcdc; display:none;" >
       <input type="text" id="editfirstname" placeholder="FirstName">&nbsp;
       <input type="text" id="editlastname" placeholder="LastName">&nbsp;
       <input type="text" id="editemail" placeholder="Email">&nbsp;
@@ -29,35 +29,41 @@
       <button @click="saveUserChanges()">Save Changes</button>
   </div>
 
-    <table id="userTable">
+  <div style="margin: 50 auto; max-width: 100%; border-radius: 30px;  border: 1px solid #dcdcdc;" >
+    <table id="userTable" style="align-items: center;">
       <tr>
-        <th></th>
-        <th>FirstName</th>
-        <th>LastName</th>
-        <th>Email</th>
-        <th>Phone</th>
-        <th>Gender</th>
-        <th>GateOfBirth</th>
-        <th>Nationality</th>
-        <th>Role</th>
-        <th>Edit</th>
-        <th>Delete</th>
+        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"></th>
+        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">FIRSTNAME</th>
+        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">LASTNAME</th>
+        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">EMAIL</th>
+        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">PHONE</th>
+        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">GENDER</th>
+        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">DATE OF BIRTH</th>
+        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">NATIONALITY</th>
+        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">ROLE</th>
+        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">EDIT</th>
+        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">DELETE</th>
       </tr>
       <tr v-for="user in users">
-        <td><input type="checkbox" :id="user.id" :name="user.firstName" v-on:change="addOrRemoveDeleteUser(user.id)"></td>
-        <td>{{user.firstName}}</td>
-        <td>{{user.lastName}}</td>
-        <td>{{user.email}}</td>
-        <td>{{user.phone}}</td>
-        <td>{{user.gender}}</td>
-        <td>{{user.dateOfBirth}}</td>
-        <td>{{user.nationality}}</td>
-        <td>{{user.role}}</td>
-        <td><button @click="editUser(user.id, user.firstName, user.lastName, user.email, user.phone, user.gender, user.dateOfBirth, user.nationality, user.role)">Edit User</button></td>
-        <td><button @click="deleteUser(user.id)">Delete User</button></td>
+        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"><input type="checkbox" :id="user.id" :name="user.firstName" v-on:change="addOrRemoveDeleteUser(user.id)"></td>
+        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.firstName}}</td>
+        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.lastName}}</td>
+        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.email}}</td>
+        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.phone}}</td>
+        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.gender}}</td>
+        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.dateOfBirth}}</td>
+        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.nationality}}</td>
+        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.role}}</td>
+        <td style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"><button @click="editUser(user.id, user.firstName, user.lastName, user.email, user.phone, user.gender, user.dateOfBirth, user.nationality, user.role)">Edit User</button></td>
+        <td style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"><button @click="deleteUser(user.id)">Delete User</button></td>
       </tr>
     </table>
-    <button @click="multipleDeletes()">Delete Selected Users</button>
+  </div>
+  <div style="margin: 20px auto;width: 575px;text-align: center;">
+    <button @click="showAddUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Add New User</button>
+    <button @click="multipleDeletes()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Delete Selected Users</button>
+  </div>
+
 
 <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
@@ -68,13 +74,21 @@
   createApp({
     data() {
       return {
-        title:"User Management",
+        title:"USER MANAGEMENT",
         users:[],
         editUserId:-1,
         deleteUsers:[]
       }
     },
       methods:{
+        showAddUser(){
+          var x = document.getElementById("addUserDiv");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        },
         addOrRemoveDeleteUser(userid){
           if(this.deleteUsers.includes(userid)){
             const index = this.deleteUsers.indexOf(userid);
@@ -184,6 +198,9 @@
           document.getElementById("editdateOfBirth").value = dateOfBirth;
           document.getElementById("editnationality").value = nationality;
           document.getElementById("editrole").value = role;
+
+          var x = document.getElementById("editUserDiv");
+            x.style.display = "block";
         },
         async deleteUser(userid){
           axios.delete(API_URL+"api/Users/"+userid).then(
@@ -215,9 +232,19 @@
                     this.users=response.data;
                 }
             )
+            var x = document.getElementById("editUserDiv");
+            x.style.display = "none";
+            var y = document.getElementById("addUserDiv");
+            y.style.display = "none";
         }
       },mounted:function(){
         this.refreshData();
       }
   }).mount('#app')
 </script>
+
+<style scoped>
+tr {
+  border-bottom: 1px solid #ddd;
+}
+</style>
