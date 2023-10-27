@@ -1,266 +1,94 @@
-<div id="app">
-    <div style="margin: 0 auto; width: 575px;"><h2 style="margin: 20px 20px; text-align:center;">{{title}}</h2></div>
-    <div style="margin: 0 auto; width: 575px; border-radius: 30px;  border: 1px solid #dcdcdc;">
-      <input type="text" id="search" placeholder="Search" style="height: 45px;width: 500px;font-size: 16px;outline: none;padding: 1px 20px;border: none;/* align-content: center; */margin: 10 10;">    
-    </div>
-    <div style="margin: 20px auto;width: 575px;text-align: center;"><button @click="search()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Find</button></div>
-    
-    <div id="addUserDiv" style="padding: 20px;margin: 50 auto; width: 575px; border-radius: 30px;  border: 1px solid #dcdcdc; display: none;">     
-      <div style="margin: 20px auto;max-width:100%;text-align: center;">
-        <h4>ADD NEW USER</h4>
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>USER MANAGMENT</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="style.css">
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    </head>
+    <body>
+        <div id="app">
+          <div style="margin: 0 auto; width: 575px;"><h2 style="margin: 20px 20px; text-align:center;">{{title}}</h2></div>
+          <div style="margin: 0 auto; width: 575px; border-radius: 30px;  border: 1px solid #dcdcdc;">
+            <input type="text" id="search" placeholder="Search" style="height: 45px;width: 500px;font-size: 16px;outline: none;padding: 1px 20px;border: none;/* align-content: center; */margin: 10 10;">    
+          </div>
+          <div style="margin: 20px auto;width: 575px;text-align: center;"><button @click="search()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Find</button></div>
+          
+          <div id="addUserDiv" style="padding: 20px;margin: 50 auto; width: 575px; border-radius: 30px;  border: 1px solid #dcdcdc; display: none;">     
+            <div style="margin: 20px auto;max-width:100%;text-align: center;">
+              <h4>ADD NEW USER</h4>
+            </div>
+            <input type="text" id="addfirstname" placeholder="FirstName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <input type="text" id="addlastname" placeholder="LastName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <input type="text" id="addemail" placeholder="Email" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <input type="text" id="addphone" placeholder="Phone" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <input type="text" id="addgender" placeholder="Gender" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <input type="text" id="adddateOfBirth" placeholder="Date of Birth [yyyy-mm-dd]" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <input type="text" id="addnationality" placeholder="Nationality" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <input type="text" id="addrole" placeholder="Role" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <div style="margin: 20px auto;max-width:100%;text-align: center;">
+              <button @click="addNewUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Add New User</button>
+              <button @click="cancelAddNewUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Cancel</button>
+            </div>
+          </div>
+      
+          <div id="editUserDiv" style="padding: 20px;margin: 50 auto; width: 575px; border-radius: 30px;  border: 1px solid #dcdcdc; display: none;">
+            <div style="margin: 20px auto;max-width:100%;text-align: center;">
+              <h4>EDIT USER</h4>
+            </div>
+            <input type="text" id="editfirstname" placeholder="FirstName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <input type="text" id="editlastname" placeholder="LastName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <input type="text" id="editemail" placeholder="Email" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <input type="text" id="editphone" placeholder="Phone" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <input type="text" id="editgender" placeholder="Gender" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <input type="text" id="editdateOfBirth" placeholder="Date of Birth [yyyy-mm-dd]" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <input type="text" id="editnationality" placeholder="Nationality" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <input type="text" id="editrole" placeholder="Role" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <div style="margin: 20px auto;max-width:100%;text-align: center;" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">
+              <button @click="saveUserChanges()"  style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Save Changes</button>
+              <button @click="cancelEditUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Cancel</button>
+            </div>
+        </div>
+      
+        <div style="margin: 50 auto; max-width: 100%; border-radius: 30px;  border: 1px solid #dcdcdc;" >
+          <table id="userTable" style="align-items: center;">
+            <tr>
+              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"></th>
+              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">FIRSTNAME</th>
+              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">LASTNAME</th>
+              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">EMAIL</th>
+              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">PHONE</th>
+              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">GENDER</th>
+              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">DATE OF BIRTH</th>
+              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">NATIONALITY</th>
+              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">ROLE</th>
+              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">EDIT</th>
+              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">DELETE</th>
+            </tr>
+            <tr v-for="user in users">
+              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"><input type="checkbox" :id="user.id" :name="user.firstName" v-on:change="addOrRemoveDeleteUser(user.id)"></td>
+              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.firstName}}</td>
+              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.lastName}}</td>
+              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.email}}</td>
+              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.phone}}</td>
+              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.gender}}</td>
+              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.dateOfBirth}}</td>
+              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.nationality}}</td>
+              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.role}}</td>
+              <td style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"><button @click="editUser(user.id, user.firstName, user.lastName, user.email, user.phone, user.gender, user.dateOfBirth, user.nationality, user.role)">Edit User</button></td>
+              <td style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"><button @click="deleteUser(user.id)">Delete User</button></td>
+            </tr>
+          </table>
+        </div>
+        <div style="margin: 20px auto;width: 575px;text-align: center;">
+          <button @click="showAddUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Add New User</button>
+          <button @click="multipleDeletes()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Delete Selected Users</button>
+        </div>
       </div>
-      <input type="text" id="addfirstname" placeholder="FirstName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <input type="text" id="addlastname" placeholder="LastName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <input type="text" id="addemail" placeholder="Email" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <input type="text" id="addphone" placeholder="Phone" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <input type="text" id="addgender" placeholder="Gender" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <input type="text" id="adddateOfBirth" placeholder="Date of Birth [yyyy-mm-dd]" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <input type="text" id="addnationality" placeholder="Nationality" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <input type="text" id="addrole" placeholder="Role" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <div style="margin: 20px auto;max-width:100%;text-align: center;">
-        <button @click="addNewUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Add New User</button>
-        <button @click="cancelAddNewUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Cancel</button>
-      </div>
-    </div>
-
-    <div id="editUserDiv" style="padding: 20px;margin: 50 auto; width: 575px; border-radius: 30px;  border: 1px solid #dcdcdc; display: none;">
-      <div style="margin: 20px auto;max-width:100%;text-align: center;">
-        <h4>EDIT USER</h4>
-      </div>
-      <input type="text" id="editfirstname" placeholder="FirstName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <input type="text" id="editlastname" placeholder="LastName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <input type="text" id="editemail" placeholder="Email" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <input type="text" id="editphone" placeholder="Phone" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <input type="text" id="editgender" placeholder="Gender" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <input type="text" id="editdateOfBirth" placeholder="Date of Birth [yyyy-mm-dd]" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <input type="text" id="editnationality" placeholder="Nationality" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <input type="text" id="editrole" placeholder="Role" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-      <div style="margin: 20px auto;max-width:100%;text-align: center;" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">
-        <button @click="saveUserChanges()"  style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Save Changes</button>
-        <button @click="cancelEditUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Cancel</button>
-      </div>
-  </div>
-
-  <div style="margin: 50 auto; max-width: 100%; border-radius: 30px;  border: 1px solid #dcdcdc;" >
-    <table id="userTable" style="align-items: center;">
-      <tr>
-        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"></th>
-        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">FIRSTNAME</th>
-        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">LASTNAME</th>
-        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">EMAIL</th>
-        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">PHONE</th>
-        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">GENDER</th>
-        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">DATE OF BIRTH</th>
-        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">NATIONALITY</th>
-        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">ROLE</th>
-        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">EDIT</th>
-        <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">DELETE</th>
-      </tr>
-      <tr v-for="user in users">
-        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"><input type="checkbox" :id="user.id" :name="user.firstName" v-on:change="addOrRemoveDeleteUser(user.id)"></td>
-        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.firstName}}</td>
-        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.lastName}}</td>
-        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.email}}</td>
-        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.phone}}</td>
-        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.gender}}</td>
-        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.dateOfBirth}}</td>
-        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.nationality}}</td>
-        <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.role}}</td>
-        <td style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"><button @click="editUser(user.id, user.firstName, user.lastName, user.email, user.phone, user.gender, user.dateOfBirth, user.nationality, user.role)">Edit User</button></td>
-        <td style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"><button @click="deleteUser(user.id)">Delete User</button></td>
-      </tr>
-    </table>
-  </div>
-  <div style="margin: 20px auto;width: 575px;text-align: center;">
-    <button @click="showAddUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Add New User</button>
-    <button @click="multipleDeletes()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Delete Selected Users</button>
-  </div>
-
-
-<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-<script type="module">
-  import { createApp, ref } from 'https://unpkg.com/vue@3/dist/vue.esm-browser.js'
-    const API_URL="https://localhost:7238/"
-    const SERVER_URL="http://127.0.0.1:5500"
-  createApp({
-    data() {
-      return {
-        title:"USER MANAGEMENT",
-        users:[],
-        editUserId:-1,
-        deleteUsers:[]
-      }
-    },
-      methods:{
-        showAddUser(){
-          var x = document.getElementById("addUserDiv");
-            x.style.display = "block";
-        },
-        addOrRemoveDeleteUser(userid){
-          if(this.deleteUsers.includes(userid)){
-            const index = this.deleteUsers.indexOf(userid);
-            if (index > -1) {
-              this.deleteUsers.splice(index, 1);
-            }
-          }
-          else this.deleteUsers.push(userid);
-        },
-        cancelAddNewUser(){
-          var x = document.getElementById("addUserDiv");
-            x.style.display = "none";
-        },
-        cancelEditUser(){
-          var x = document.getElementById("editUserDiv");
-            x.style.display = "none";
-        },
-        async refreshData(){
-            axios.get(API_URL+"api/Users", {
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin':  "'"+SERVER_URL+"'"
-            }
-          }).then(
-                (response)=>{
-                    this.users=response.data;
-                }
-            )
-        },
-        async addNewUser(){
-          var firstname = document.getElementById("addfirstname").value;
-          var lastname = document.getElementById("addlastname").value;
-          var email = document.getElementById("addemail").value;
-          var phone  = document.getElementById("addphone").value;
-          var gender = document.getElementById("addgender").value;
-          var dateOfBirth = document.getElementById("adddateOfBirth").value;
-          var nationality = document.getElementById("addnationality").value;
-          var role = document.getElementById("addrole").value;
-
-          const formData = new FormData();
-          formData.append("firstName", firstname);
-          formData.append("lastName", lastname);
-          formData.append("email", email);
-          formData.append("phone", phone);
-          formData.append("gender", gender);
-          formData.append("dateOfBirth", dateOfBirth);
-          formData.append("nationality", nationality);
-          formData.append("role", role);
-
-          var object = {};
-          formData.forEach(function(value, key){
-              object[key] = value;
-          });
-          var json = JSON.stringify(object);
-
-          axios.post(API_URL+"api/Users", json, {
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': "'"+SERVER_URL+"'"
-            }
-          }).then(
-            (response)=>{
-              this.refreshData();
-              alert(response.data);
-            }
-          )
-        },
-        async saveUserChanges(){
-          var firstname = document.getElementById("editfirstname").value;
-          var lastname = document.getElementById("editlastname").value;
-          var email = document.getElementById("editemail").value;
-          var phone  = document.getElementById("editphone").value;
-          var gender = document.getElementById("editgender").value;
-          var dateOfBirth = document.getElementById("editdateOfBirth").value;
-          var nationality = document.getElementById("editnationality").value;
-          var role = document.getElementById("editrole").value;
-
-          const formData = new FormData();
-          formData.append("id", this.editUserId);
-          formData.append("firstName", firstname);
-          formData.append("lastName", lastname);
-          formData.append("email", email);
-          formData.append("phone", phone);
-          formData.append("gender", gender);
-          formData.append("dateOfBirth", dateOfBirth);
-          formData.append("nationality", nationality);
-          formData.append("role", role);
-
-          var object = {};
-          formData.forEach(function(value, key){
-              object[key] = value;
-          });
-          var json = JSON.stringify(object);
-
-          axios.put(API_URL+"api/Users/"+this.editUserId, json, {
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin': "'"+SERVER_URL+"'"
-            }
-          }).then(
-            (response)=>{
-              this.refreshData();
-              alert(response.data);
-          console.log(JSON.stringify(response));
-            }
-          )
-        },
-        async editUser(userid, firstName, lastName, email, phone, gender, dateOfBirth, nationality, role){
-          this.editUserId = userid;
-          document.getElementById("editfirstname").value = firstName;
-          document.getElementById("editlastname").value = lastName;
-          document.getElementById("editemail").value = email;
-          document.getElementById("editphone").value = phone;
-          document.getElementById("editgender").value = gender;
-          document.getElementById("editdateOfBirth").value = dateOfBirth;
-          document.getElementById("editnationality").value = nationality;
-          document.getElementById("editrole").value = role;
-
-          var x = document.getElementById("editUserDiv");
-            x.style.display = "block";
-        },
-        async deleteUser(userid){
-          axios.delete(API_URL+"api/Users/"+userid).then(
-                (response)=>{
-                  this.refreshData();
-                  alert(response.data);
-                }
-            )
-        },
-        async multipleDeletes(){
-            this.deleteUsers.forEach(element => {
-              axios.delete(API_URL+"api/Users/"+element).then(
-                (response)=>{
-                  this.refreshData();
-                }
-            )
-            });
-            alert(response.data);
-        },
-        async search(){
-          var searchString = document.getElementById("search").value;
-          axios.get(API_URL+"api/Users/search/"+searchString, {
-            headers: {
-              'Content-Type': 'application/json',
-              'Access-Control-Allow-Origin':  "'"+SERVER_URL+"'"
-            }
-          }).then(
-                (response)=>{
-                    this.users=response.data;
-                }
-            )
-            var x = document.getElementById("editUserDiv");
-            x.style.display = "none";
-            var y = document.getElementById("addUserDiv");
-            y.style.display = "none";
-        }
-      },mounted:function(){
-        this.refreshData();
-      }
-  }).mount('#app')
-</script>
-
-<style scoped>
-tr {
-  border-bottom: 1px solid #ddd;
-}
-</style>
+        <script type="module" src="/script.js"></script>
+    </body>
+</html>
