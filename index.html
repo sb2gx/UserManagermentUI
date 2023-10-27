@@ -16,77 +16,77 @@
           <div class="searchBox">
             <input type="text" id="search" placeholder="Search" class="searchInput">    
           </div>
-          <div style="margin: 20px auto;width: 575px;text-align: center;"><button @click="search()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Find</button></div>
+          <div class="findButtonBox"><button @click="search()" class="grayButton">Find</button></div>
           
-          <div id="addUserDiv" style="padding: 20px;margin: 50 auto; width: 575px; border-radius: 30px;  border: 1px solid #dcdcdc; display: none;">     
-            <div style="margin: 20px auto;max-width:100%;text-align: center;">
+          <div id="addUserDiv" class="userDiv">     
+            <div class="userDivHeader">
               <h4>ADD NEW USER</h4>
             </div>
-            <input type="text" id="addfirstname" placeholder="FirstName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-            <input type="text" id="addlastname" placeholder="LastName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-            <input type="text" id="addemail" placeholder="Email" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-            <input type="text" id="addphone" placeholder="Phone" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-            <input type="text" id="addgender" placeholder="Gender" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-            <input type="text" id="adddateOfBirth" placeholder="Date of Birth [yyyy-mm-dd]" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-            <input type="text" id="addnationality" placeholder="Nationality" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-            <input type="text" id="addrole" placeholder="Role" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
+            <input type="text" id="addfirstname" placeholder="FirstName" class="formItem">&nbsp;
+            <input type="text" id="addlastname" placeholder="LastName" class="formItem">&nbsp;
+            <input type="text" id="addemail" placeholder="Email" class="formItem">&nbsp;
+            <input type="text" id="addphone" placeholder="Phone" class="formItem">&nbsp;
+            <input type="text" id="addgender" placeholder="Gender" class="formItem">&nbsp;
+            <input type="text" id="adddateOfBirth" placeholder="Date of Birth [yyyy-mm-dd]" class="formItem">&nbsp;
+            <input type="text" id="addnationality" placeholder="Nationality" class="formItem">&nbsp;
+            <input type="text" id="addrole" placeholder="Role" class="formItem">&nbsp;
             <div style="margin: 20px auto;max-width:100%;text-align: center;">
-              <button @click="addNewUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Add New User</button>
-              <button @click="cancelAddNewUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Cancel</button>
+              <button @click="addNewUser()" class="grayButton">Add New User</button>
+              <button @click="cancelAddNewUser()" class="grayButton">Cancel</button>
             </div>
           </div>
       
-          <div id="editUserDiv" style="padding: 20px;margin: 50 auto; width: 575px; border-radius: 30px;  border: 1px solid #dcdcdc; display: none;">
-            <div style="margin: 20px auto;max-width:100%;text-align: center;">
+          <div id="editUserDiv" class="userDiv">
+            <div class="userDivHeader">
               <h4>EDIT USER</h4>
             </div>
-            <input type="text" id="editfirstname" placeholder="FirstName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-            <input type="text" id="editlastname" placeholder="LastName" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-            <input type="text" id="editemail" placeholder="Email" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-            <input type="text" id="editphone" placeholder="Phone" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-            <input type="text" id="editgender" placeholder="Gender" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-            <input type="text" id="editdateOfBirth" placeholder="Date of Birth [yyyy-mm-dd]" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-            <input type="text" id="editnationality" placeholder="Nationality" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-            <input type="text" id="editrole" placeholder="Role" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">&nbsp;
-            <div style="margin: 20px auto;max-width:100%;text-align: center;" style="border-radius: 3px; border: none; color: #333333; font-size: 16px; height: 30px; margin-bottom: 5px; padding: 7px 6px; width: 100%;background-color: rgba(18, 135, 198, 0.09); box-shadow: 0 1px 0px 0px rgb(0 0 0 / 9%) inset;">
-              <button @click="saveUserChanges()"  style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Save Changes</button>
-              <button @click="cancelEditUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Cancel</button>
+            <input type="text" id="editfirstname" placeholder="FirstName" class="formItem">&nbsp;
+            <input type="text" id="editlastname" placeholder="LastName" class="formItem">&nbsp;
+            <input type="text" id="editemail" placeholder="Email" class="formItem">&nbsp;
+            <input type="text" id="editphone" placeholder="Phone" class="formItem">&nbsp;
+            <input type="text" id="editgender" placeholder="Gender" class="formItem">&nbsp;
+            <input type="text" id="editdateOfBirth" placeholder="Date of Birth [yyyy-mm-dd]" class="formItem">&nbsp;
+            <input type="text" id="editnationality" placeholder="Nationality" class="formItem">&nbsp;
+            <input type="text" id="editrole" placeholder="Role" class="formItem">&nbsp;
+            <div style="margin: 20px auto;max-width:100%;text-align: center;" class="formItem">
+              <button @click="saveUserChanges()"  class="grayButton">Save Changes</button>
+              <button @click="cancelEditUser()" class="grayButton">Cancel</button>
             </div>
         </div>
       
-        <div style="margin: 50 auto; max-width: 100%; border-radius: 30px;  border: 1px solid #dcdcdc;" >
-          <table id="userTable" style="align-items: center;">
+        <div class="tableBox" >
+          <table id="userTable">
             <tr>
-              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"></th>
-              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">FIRSTNAME</th>
-              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">LASTNAME</th>
-              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">EMAIL</th>
-              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">PHONE</th>
-              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">GENDER</th>
-              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">DATE OF BIRTH</th>
-              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">NATIONALITY</th>
-              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">ROLE</th>
-              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">EDIT</th>
-              <th style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">DELETE</th>
+              <th></th>
+              <th>FIRSTNAME</th>
+              <th>LASTNAME</th>
+              <th>EMAIL</th>
+              <th>PHONE</th>
+              <th>GENDER</th>
+              <th>DATE OF BIRTH</th>
+              <th>NATIONALITY</th>
+              <th>ROLE</th>
+              <th>EDIT</th>
+              <th>DELETE</th>
             </tr>
             <tr v-for="user in users">
-              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"><input type="checkbox" :id="user.id" :name="user.firstName" v-on:change="addOrRemoveDeleteUser(user.id)"></td>
-              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.firstName}}</td>
-              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.lastName}}</td>
-              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.email}}</td>
-              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.phone}}</td>
-              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.gender}}</td>
-              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.dateOfBirth}}</td>
-              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.nationality}}</td>
-              <td style="border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;">{{user.role}}</td>
-              <td style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"><button @click="editUser(user.id, user.firstName, user.lastName, user.email, user.phone, user.gender, user.dateOfBirth, user.nationality, user.role)">Edit User</button></td>
-              <td style="text-transform:uppercase; border-bottom-color: #f0f2f5; padding: 0.75rem 1.5rem; text-transform: capitalize; letter-spacing: 0px; border-bottom: 1px solid #f0f2f5;"><button @click="deleteUser(user.id)">Delete User</button></td>
+              <td><input type="checkbox" :id="user.id" :name="user.firstName" v-on:change="addOrRemoveDeleteUser(user.id)" placeholder="check"></td>
+              <td>{{user.firstName}}</td>
+              <td>{{user.lastName}}</td>
+              <td>{{user.email}}</td>
+              <td>{{user.phone}}</td>
+              <td>{{user.gender}}</td>
+              <td>{{user.dateOfBirth}}</td>
+              <td>{{user.nationality}}</td>
+              <td>{{user.role}}</td>
+              <td class="tableButton"><button @click="editUser(user.id, user.firstName, user.lastName, user.email, user.phone, user.gender, user.dateOfBirth, user.nationality, user.role)">Edit User</button></td>
+              <td class="tableButton"><button @click="deleteUser(user.id)">Delete User</button></td>
             </tr>
           </table>
         </div>
         <div style="margin: 20px auto;width: 575px;text-align: center;">
-          <button @click="showAddUser()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Add New User</button>
-          <button @click="multipleDeletes()" style="background-color: #f5f5f5; border: none;color: #707070;font-size: 15px;padding: 10px 20px;margin: 5px;border-radius: 4px;outline: none;">Delete Selected Users</button>
+          <button @click="showAddUser()" class="grayButton">Add New User</button>
+          <button @click="multipleDeletes()" class="grayButton">Delete Selected Users</button>
         </div>
       </div>
         <script type="module" src="/script.js"></script>
