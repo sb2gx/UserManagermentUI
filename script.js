@@ -11,6 +11,13 @@ data() {
     }
 },
     methods:{
+    validateEmail() {
+        if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(this.email)) {
+            this.msg['email'] = 'Please enter a valid email address';
+        } else {
+            this.msg['email'] = '';
+        }
+    },
     showAddUser(){
         var x = document.getElementById("addUserDiv");
         x.style.display = "block";

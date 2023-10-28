@@ -18,42 +18,44 @@
           </div>
           <div class="findButtonBox"><button @click="search()" class="grayButton">Find</button></div>
           
-          <div id="addUserDiv" class="userDiv">     
-            <div class="userDivHeader">
-              <h4>ADD NEW USER</h4>
+          <div class="formsDiv">
+            <div id="addUserDiv" class="userDiv">     
+              <div class="userDivHeader">
+                <h4>ADD NEW USER</h4>
+              </div>
+              <input type="text" id="addfirstname" placeholder="FirstName" class="formItem">&nbsp;
+              <input type="text" id="addlastname" placeholder="LastName" class="formItem">&nbsp;
+              <input type="text" id="addemail" placeholder="Email" class="formItem" required>&nbsp;
+              <input type="text" id="addphone" placeholder="Phone" class="formItem">&nbsp;
+              <input type="text" id="addgender" placeholder="Gender" class="formItem">&nbsp;
+              <input type="text" id="adddateOfBirth" placeholder="Date of Birth [yyyy-mm-dd]" class="formItem">&nbsp;
+              <input type="text" id="addnationality" placeholder="Nationality" class="formItem">&nbsp;
+              <input type="text" id="addrole" placeholder="Role" class="formItem">&nbsp;
+              <div style="margin: 20px auto;max-width:100%;text-align: center;">
+                <button @click="addNewUser()" class="grayButton">Add New User</button>
+                <button @click="cancelAddNewUser()" class="grayButton">Cancel</button>
+              </div>
             </div>
-            <input type="text" id="addfirstname" placeholder="FirstName" class="formItem">&nbsp;
-            <input type="text" id="addlastname" placeholder="LastName" class="formItem">&nbsp;
-            <input type="text" id="addemail" placeholder="Email" class="formItem">&nbsp;
-            <input type="text" id="addphone" placeholder="Phone" class="formItem">&nbsp;
-            <input type="text" id="addgender" placeholder="Gender" class="formItem">&nbsp;
-            <input type="text" id="adddateOfBirth" placeholder="Date of Birth [yyyy-mm-dd]" class="formItem">&nbsp;
-            <input type="text" id="addnationality" placeholder="Nationality" class="formItem">&nbsp;
-            <input type="text" id="addrole" placeholder="Role" class="formItem">&nbsp;
-            <div style="margin: 20px auto;max-width:100%;text-align: center;">
-              <button @click="addNewUser()" class="grayButton">Add New User</button>
-              <button @click="cancelAddNewUser()" class="grayButton">Cancel</button>
-            </div>
-          </div>
-      
-          <div id="editUserDiv" class="userDiv">
-            <div class="userDivHeader">
-              <h4>EDIT USER</h4>
-            </div>
-            <input type="text" id="editfirstname" placeholder="FirstName" class="formItem">&nbsp;
-            <input type="text" id="editlastname" placeholder="LastName" class="formItem">&nbsp;
-            <input type="text" id="editemail" placeholder="Email" class="formItem">&nbsp;
-            <input type="text" id="editphone" placeholder="Phone" class="formItem">&nbsp;
-            <input type="text" id="editgender" placeholder="Gender" class="formItem">&nbsp;
-            <input type="text" id="editdateOfBirth" placeholder="Date of Birth [yyyy-mm-dd]" class="formItem">&nbsp;
-            <input type="text" id="editnationality" placeholder="Nationality" class="formItem">&nbsp;
-            <input type="text" id="editrole" placeholder="Role" class="formItem">&nbsp;
-            <div style="margin: 20px auto;max-width:100%;text-align: center;" class="formItem">
-              <button @click="saveUserChanges()"  class="grayButton">Save Changes</button>
-              <button @click="cancelEditUser()" class="grayButton">Cancel</button>
+        
+            <div id="editUserDiv" class="userDiv">
+              <div class="userDivHeader">
+                <h4>EDIT USER</h4>
+              </div>
+              <input type="text" id="editfirstname" placeholder="FirstName" class="formItem">&nbsp;
+              <input type="text" id="editlastname" placeholder="LastName" class="formItem">&nbsp;
+              <input type="text" id="editemail" placeholder="Email" class="formItem">&nbsp;
+              <input type="text" id="editphone" placeholder="Phone" class="formItem">&nbsp;
+              <input type="text" id="editgender" placeholder="Gender" class="formItem">&nbsp;
+              <input type="text" id="editdateOfBirth" placeholder="Date of Birth [yyyy-mm-dd]" class="formItem">&nbsp;
+              <input type="text" id="editnationality" placeholder="Nationality" class="formItem">&nbsp;
+              <input type="text" id="editrole" placeholder="Role" class="formItem">&nbsp;
+              <div style="margin: 20px auto;max-width:100%;text-align: center;">
+                <button @click="saveUserChanges()"  class="grayButton">Save Changes</button>
+                <button @click="cancelEditUser()" class="grayButton">Cancel</button>
+              </div>
             </div>
         </div>
-      
+
         <div class="tableBox" >
           <table id="userTable">
             <tr>
